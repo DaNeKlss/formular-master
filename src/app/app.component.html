@@ -1,0 +1,41 @@
+<div>
+	<h1>{{ title }}</h1>
+	<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<label for="name">Jméno:</label>
+			<input id="name" formControlName="name" class="form-control" />
+			<!-- Chybová zpráva pro jméno -->
+			<div class="text-danger" *ngIf="getErrors('name')?.['required']"><strong>Vyplňte formulář</strong></div>
+		</div>
+
+		<div class="form-group">
+			<label for="surname">Příjmení:</label>
+			<input id="surname" formControlName="surname" class="form-control" />
+			<!-- Chybová zpráva pro příjmení -->
+			<div class="text-danger" *ngIf="getErrors('surname')?.['required']"><strong>Vyplňte formulář</strong></div>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Odeslat</button>
+	</form>
+
+	<h2>Data Tabulky:</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Jméno</th>
+				<th>Příjmení</th>
+			</tr>
+		</thead>
+		<tbody *ngIf="tableData && tableData.length > 0; else noData">
+			<tr *ngFor="let data of tableData; trackBy: trackByFn">
+				<td>{{ data.name }}</td>
+				<td>{{ data.surname }}</td>
+			</tr>
+		</tbody>
+		<ng-template #noData>
+			<tr>
+				<td colspan="2">Žádná data k dispozici</td>
+			</tr>
+		</ng-template>
+	</table>
+</div>

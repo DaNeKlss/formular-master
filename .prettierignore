@@ -1,0 +1,9 @@
+/.idea/
+/.task/
+/*/.*/
+/*.env
+/**/tests.ts
+/**/*.spec.ts
+/app/src/assets/**/*
+eslint.config.js
+
