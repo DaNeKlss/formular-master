@@ -26,7 +26,10 @@ export class AppComponent {
 		console.log(this.myForm);
 
 		// Načtení dat z localStorage při načtení aplikace
-		const storedData = JSON.parse(localStorage.getItem("tableData") || "[]");
+		const storedData = JSON.parse(localStorage.getItem("tableData") ?? "[]") as {
+			name: string;
+			surname: string;
+		}[];
 		this.tableData = Array.isArray(storedData) ? storedData : [];
 	}
 
